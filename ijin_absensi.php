@@ -199,6 +199,9 @@ include('sidebar.php');
 
                   </tbody>
             </table>
+            <center>
+              <a target="_blank" href="export_ijinabsensi.php">EXPORT KE EXCEL</a>
+            </center>
                   <ul class="pagination">
                       <li><a href="?pageno=1">First</a></li>
                       <li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">

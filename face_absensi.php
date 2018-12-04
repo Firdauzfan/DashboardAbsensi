@@ -90,6 +90,7 @@ if(isset($_POST['btn-submit'])){
                       <th>Telat</th>
                       <th>Kamera</th>
                       <th>Status</th>
+                      <th>Divisi</th>
                       <th>Foto Kedatangan</th>
                       <th>Foto Kepulangan</th>
                     </tr>
@@ -175,6 +176,9 @@ if(isset($_POST['btn-submit'])){
 
                   </tbody>
             </table>
+            <center>
+              <a target="_blank" href="export_absensi.php">EXPORT KE EXCEL</a>
+            </center>
                   <ul class="pagination">
                       <li><a href="?pageno=1">First</a></li>
                       <li class="<?php if($pageno <= 1){ echo 'disabled'; } ?>">
