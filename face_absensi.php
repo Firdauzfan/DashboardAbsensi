@@ -71,8 +71,15 @@ if(isset($_POST['btn-submit'])){
                   <td>
                       <select name="valuedivisi">
                           <option name="divisi" value="All">All</option>
-                          <option name="divisi" value="IT">IT</option>
-                          <option name="divisi" value="HRD">Human Capital</option>
+                          <?php
+                            $divisisql="SELECT DISTINCT divisi FROM employee WHERE 1 ORDER BY divisi";
+                            $query2 = $con->query($divisisql);
+                            while ($row = $query2->fetch_assoc()) {
+                              $div=$row['divisi'];
+                              echo "<option name='divisi' value='". $div."'>" . $div. "</option>\n";
+                            }
+
+                           ?>
                       </select>
                   </td>
                   <p>From: <input type="text" id="datepicker" name="from"></p>
