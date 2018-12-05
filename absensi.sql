@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 03, 2018 at 04:25 PM
+-- Generation Time: Dec 05, 2018 at 10:05 AM
 -- Server version: 5.7.24-0ubuntu0.18.04.1
 -- PHP Version: 7.2.10-0ubuntu0.18.04.1
 
@@ -19,6 +19,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `absensi`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `nama_login` varchar(30) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `last_login` datetime DEFAULT NULL,
+  `last_logout` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `nama`, `nama_login`, `password`, `last_login`, `last_logout`) VALUES
+(1, 'Firdauz Fanani', 'FirdauzFanani', '123456', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -75,16 +97,16 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`id`, `id_pegawai`, `id_telegram`, `nama_pegawai`, `email`, `no_hp`, `divisi`, `jabatan`, `warning1`, `warning2`, `warning3`) VALUES
 (1, 12345, 205017793, 'Firdauz Fanani', 'firdauzfanani@gmail.com', '081567920578', 'IT', 'Manager IT', 'Surat Peringatan 1', NULL, NULL),
-(2, 12346, 668662889, 'Riyadi Agung Suharto', '0', '0817737727', 'IT', 'Manager IOT', NULL, NULL, NULL),
+(2, 12346, 668662889, 'Riyadi Agung Suharto', '0', '0817737727', 'IT', 'Manager IOT', 'Surat Peringatan 1', NULL, NULL),
 (3, 12347, 750150427, 'Teoderikus Ferdian', '0', '087839659675', 'Marketing', 'Manager Marketing', NULL, NULL, NULL),
 (4, 12348, 376571445, 'Wahyudi Prasatia', '0', '085363236007', 'Marketing', 'Staf', NULL, NULL, NULL),
 (5, 12349, 692286966, 'Muhammad Reiza Syaifullah', 'firdauz.fanani@mail.ugm.ac.id', '085274521796', 'HRD', 'Manager HRD', NULL, NULL, NULL),
 (6, 12340, 644107942, 'Liza A Barezi', 'lizabarezi@gspe.co.id', '085725180999', 'HRD', 'Staf', 'Surat Peringatan 1', NULL, NULL),
 (7, 12341, 764143199, 'Vicky Yuliandi Siahaan', '0', '08128552527', 'IT', 'Staf', 'Surat Peringatan 1', NULL, NULL),
-(8, 12342, 723606683, 'Faza Ghassani', '0', '089676824961', 'Produksi', 'Manager Produksi', NULL, NULL, NULL),
+(8, 12342, 723606683, 'Faza Ghassani', '0', '089676824961', 'Produksi', 'Manager Produksi', 'Surat Peringatan 1', NULL, NULL),
 (9, 12343, 252488349, 'Muhammad Yasir Abdulazis', '0', '081703078960', 'Procurement', 'Staf', NULL, NULL, NULL),
 (10, 12350, 757158209, 'Dwi Prasetyo', '0', '085224666426', 'Procurement', 'Staf', NULL, NULL, NULL),
-(11, 12351, 670747420, 'Imam Sulthon', '0', '081917558038', 'IT', 'Staf', 'Surat Peringatan 1', NULL, NULL),
+(11, 12351, 670747420, 'Imam Sulthon', '0', '081917558038', 'IT', 'Staf', 'Surat Peringatan 1', 'Coaching By HRD', NULL),
 (12, 12354, 788061070, 'Abdul Rohman', '0', '085795735556', 'Resepsionis', 'Staf', NULL, NULL, NULL),
 (13, 13451, 690578780, 'Gusli Arifin', 'gusli@gspe.com', '082283802775', 'Maintenance', 'Staf', NULL, NULL, NULL),
 (14, 12612, 276178321, 'Tonny Siregar', 'tonys@gspe.co.id', '081908999079', 'CRC', 'Manager CRC', 'Surat Peringatan 1', 'Coaching By HRD', NULL),
@@ -323,7 +345,9 @@ INSERT INTO `face_absensi` (`id`, `employee_id`, `nama_pegawai`, `waktu_masuk`, 
 (204, 12350, 'Dwi Prasetyo', '2018-11-30 08:22:10', '2018-11-30 19:09:15', 0, 'kamera 1', 'Tepat Waktu', 'OUT', 0, 0),
 (205, 12342, 'Faza Ghassani', '2018-11-30 08:22:36', '2018-11-30 17:49:20', 0, 'kamera 1', 'Tepat Waktu', 'OUT', 0, 0),
 (206, 12351, 'Imam Sulthon', '2018-11-30 08:33:44', '2018-11-30 17:51:04', 0, 'kamera 1', 'Tepat Waktu', 'OUT', 0, 0),
-(207, 12354, 'Abdul Rohman', '2018-11-30 08:34:06', '2018-11-30 18:17:49', 0, 'kamera 1', 'Tepat Waktu', 'OUT', 0, 0);
+(207, 12354, 'Abdul Rohman', '2018-11-30 08:34:06', '2018-11-30 18:17:49', 0, 'kamera 1', 'Tepat Waktu', 'OUT', 0, 0),
+(209, 12346, 'Riyadi Agung Suharto', '2018-12-04 16:32:10', '2018-12-04 18:07:43', 467.167, 'kamera 1', 'Terlambat', 'OUT', 1, 0),
+(211, 12345, 'Firdauz Fanani', '2018-12-05 06:09:55', NULL, 0, 'kamera 1', 'Tepat Waktu', 'IN', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1168,7 +1192,42 @@ INSERT INTO `face_keamanan` (`id`, `nama`, `waktu`, `kamera`, `status`, `aktif_n
 (820, 'Firdauz Fanani', '2018-12-03 10:16:04', 'kamera 1', 'melanggar', 0),
 (821, 'Vicky Yuliandi Siahaan', '2018-12-03 10:16:07', 'kamera 1', NULL, 0),
 (822, 'Imam Sulthon', '2018-12-03 10:17:46', 'kamera 1', NULL, 0),
-(823, 'Imam Sulthon', '2018-12-03 14:15:28', 'kamera 1', 'melanggar', 0);
+(823, 'Imam Sulthon', '2018-12-03 14:15:28', 'kamera 1', 'melanggar', 0),
+(824, 'Faza Ghassani', '2018-12-04 16:31:24', 'kamera 1', 'tidak melanggar', 0),
+(825, 'Riyadi Agung Suharto', '2018-12-04 16:32:10', 'kamera 1', 'melanggar', 0),
+(826, 'Imam Sulthon', '2018-12-04 16:33:06', 'kamera 1', 'melanggar', 0),
+(827, 'Riyadi Agung Suharto', '2018-12-04 16:33:16', 'kamera 1', 'melanggar', 0),
+(828, 'Faza Ghassani', '2018-12-04 16:33:48', 'kamera 1', 'tidak melanggar', 0),
+(829, 'Riyadi Agung Suharto', '2018-12-04 16:34:04', 'kamera 1', 'melanggar', 0),
+(830, 'Riyadi Agung Suharto', '2018-12-04 16:35:36', 'kamera 1', 'melanggar', 0),
+(831, 'Riyadi Agung Suharto', '2018-12-04 16:36:03', 'kamera 1', 'melanggar', 0),
+(832, 'Faza Ghassani', '2018-12-04 16:36:07', 'kamera 1', 'tidak melanggar', 0),
+(833, 'Riyadi Agung Suharto', '2018-12-04 16:38:50', 'kamera 1', 'melanggar', 0),
+(834, 'Riyadi Agung Suharto', '2018-12-04 16:39:02', 'kamera 1', 'melanggar', 0),
+(835, 'Riyadi Agung Suharto', '2018-12-04 16:40:00', 'kamera 1', 'melanggar', 0),
+(836, 'Riyadi Agung Suharto', '2018-12-04 16:41:00', 'kamera 1', 'melanggar', 0),
+(837, 'Faza Ghassani', '2018-12-04 16:41:13', 'kamera 1', 'tidak melanggar', 0),
+(838, 'Riyadi Agung Suharto', '2018-12-04 16:49:20', 'kamera 1', 'melanggar', 0),
+(839, 'Faza Ghassani', '2018-12-04 16:49:28', 'kamera 1', 'tidak melanggar', 0),
+(840, 'Riyadi Agung Suharto', '2018-12-04 16:50:00', 'kamera 1', 'melanggar', 1),
+(841, 'Faza Ghassani', '2018-12-04 16:50:16', 'kamera 1', 'tidak melanggar', 0),
+(842, 'Imam Sulthon', '2018-12-04 16:50:27', 'kamera 1', 'melanggar', 1),
+(843, 'Riyadi Agung Suharto', '2018-12-04 16:51:00', 'kamera 1', 'melanggar', 1),
+(844, 'Riyadi Agung Suharto', '2018-12-04 16:52:15', 'kamera 1', 'melanggar', 1),
+(845, 'Faza Ghassani', '2018-12-04 16:52:25', 'kamera 1', 'tidak melanggar', 0),
+(846, 'Imam Sulthon', '2018-12-04 16:53:38', 'kamera 1', 'melanggar', 1),
+(847, 'Imam Sulthon', '2018-12-04 16:54:06', 'kamera 1', 'melanggar', 1),
+(848, 'Riyadi Agung Suharto', '2018-12-04 16:54:37', 'kamera 1', 'melanggar', 1),
+(849, 'Faza Ghassani', '2018-12-04 16:54:56', 'kamera 1', 'tidak melanggar', 0),
+(850, 'Faza Ghassani', '2018-12-04 16:55:00', 'kamera 1', 'tidak melanggar', 0),
+(851, 'Riyadi Agung Suharto', '2018-12-04 16:55:00', 'kamera 1', 'melanggar', 1),
+(852, 'Riyadi Agung Suharto', '2018-12-04 16:56:00', 'kamera 1', 'melanggar', 1),
+(853, 'Faza Ghassani', '2018-12-04 16:56:06', 'kamera 1', 'tidak melanggar', 0),
+(854, 'Riyadi Agung Suharto', '2018-12-04 16:58:16', 'kamera 1', 'melanggar', 1),
+(855, 'Faza Ghassani', '2018-12-04 16:58:54', 'kamera 1', 'tidak melanggar', 0),
+(856, 'Firdauz Fanani', '2018-12-04 18:07:33', 'kamera 1', 'melanggar', 1),
+(857, 'Riyadi Agung Suharto', '2018-12-04 18:07:43', 'kamera 1', 'melanggar', 1),
+(858, 'Abdul Rohman', '2018-12-04 18:08:04', 'kamera 1', 'tidak melanggar', 0);
 
 -- --------------------------------------------------------
 
@@ -1209,6 +1268,12 @@ INSERT INTO `ijin_absensi` (`id`, `nama_pegawai`, `ijin`, `alasan_ijin`, `tangga
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `camera`
 --
 ALTER TABLE `camera`
@@ -1243,6 +1308,11 @@ ALTER TABLE `ijin_absensi`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
@@ -1251,12 +1321,12 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `face_absensi`
 --
 ALTER TABLE `face_absensi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
 --
 -- AUTO_INCREMENT for table `face_keamanan`
 --
 ALTER TABLE `face_keamanan`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=824;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=859;
 --
 -- AUTO_INCREMENT for table `ijin_absensi`
 --
