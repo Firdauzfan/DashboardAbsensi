@@ -32,7 +32,18 @@
           </span>
         </a>
       </li>
-    
+      <?php
+      if (isset($_SESSION['nama_log'])) {
+        echo '<li>
+          <a href="logout.php">
+            <i class="fa fa-cog"></i> <span>Logout</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>';
+      }
+
+      ?>
     </ul>
   </section>
   <!-- /.sidebar -->

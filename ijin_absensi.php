@@ -2,6 +2,11 @@
 // Start the session
 session_start();
 
+// Cek Login Apakah Sudah Login atau Belum
+if (!isset($_SESSION['nama_log'])){
+// Jika Tidak Arahkan Kembali ke Halaman Login
+  header("location: index.php");
+}
 ?>
 <!DOCTYPE html>
 <html>

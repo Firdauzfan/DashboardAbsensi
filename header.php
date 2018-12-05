@@ -1,6 +1,13 @@
 <header class="main-header">
   <!-- Logo -->
-  <a href="index.php" class="logo">
+  <?php
+  if (isset($_SESSION['nama_log'])) {
+    echo '  <a href="#" class="logo">';
+  } else {
+    echo '  <a href="index.php" class="logo">';
+  }
+   ?>
+
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>V</b>A</span>
     <!-- logo for regular state and mobile devices -->
