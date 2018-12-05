@@ -59,6 +59,7 @@ include('sidebar.php');
     	  echo "<script>alert('Nama atau Password salah')</script>";
 
     	 }else{
+        $sqllaslogin = mysqli_query($con, "UPDATE `admin` SET `last_login`=CURRENT_TIMESTAMP WHERE nama_login='$Nama_Login'");
     	 	$row = mysqli_fetch_assoc($sql);
         $_SESSION['nama_log']=$row['nama_login'];
     	 	$_SESSION['pass']=$row['password'];
