@@ -282,7 +282,28 @@ include('sidebar.php');
         });
       });
       </script>
+      <script>
+      // Get the modal
+      jQuery(document).ready(function () {
+        jQuery('#myModal').on('show.bs.modal', function (e) {
+            var image = jQuery(e.relatedTarget).attr('src');
+            jQuery(".img-responsive").attr("src", image);
+        });
+      });
+      </script>
+      <script>
+      $( function() {
+        $( "#datepicker" ).datepicker();
+        dateFormat: 'yy-mm-dd'
+      } );
+      </script>
 
+      <script>
+      $( function() {
+        $( "#datepicker2" ).datepicker();
+        dateFormat: 'yy-mm-dd'
+      } );
+      </script>
     </section>
     <!-- /.content -->
   </div>
