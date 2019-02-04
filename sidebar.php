@@ -19,6 +19,13 @@
         </a>
       </li>
       <li>
+        <a href="notabsence.php">
+          <i class="fa fa-address-book-o"></i> <span>Data Belum/Tidak Absensi</span>
+          <span class="pull-right-container">
+          </span>
+        </a>
+      </li>
+      <li>
         <a href="face_keamanan.php">
           <i class="fa fa-user-secret"></i> <span>Data Keamanan</span>
           <span class="pull-right-container">
