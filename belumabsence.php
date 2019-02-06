@@ -37,8 +37,6 @@ include('sidebar.php');
 <?php
 if(isset($_POST['btn-submit'])){
   $_SESSION['valuedivisi'] = $_POST['valuedivisi'];
-  $_SESSION['from'] = $_POST['from'];
-  $_SESSION['to'] = $_POST['to'];
 }
  ?>
 
@@ -48,11 +46,11 @@ if(isset($_POST['btn-submit'])){
     <section class="content-header">
       <h1>
         Dashboard
-        <small>Absensi</small>
+        <small>Belum Absensi</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Absensi</li>
+        <li class="active">Belum Absensi</li>
       </ol>
     </section>
 
@@ -60,7 +58,7 @@ if(isset($_POST['btn-submit'])){
     <section class="content">
 
     <div class="content-absolute">
-      <form action="notabsence.php" method="post">
+      <form action="belumabsence.php" method="post">
           <table border="0">
               <tr>
                   <th>Filter Search</th>
@@ -82,8 +80,6 @@ if(isset($_POST['btn-submit'])){
                            ?>
                       </select>
                   </td>
-                  <p>From: <input type="text" id="datepicker" name="from"></p>
-                  <p>To: <input type="text" id="datepicker2" name="to"></p>
               </tr>
 
               <td>
@@ -98,9 +94,7 @@ if(isset($_POST['btn-submit'])){
                       <th>No</th>
                       <th>Nama Pegawai</th>
                       <th>NIP</th>
-                      <th>Tanggal Absen</th>
                       <th>Divisi</th>
-
                     </tr>
                   </thead>
                   <tbody>
@@ -114,11 +108,10 @@ if(isset($_POST['btn-submit'])){
                     }
                    $no_of_records_per_page = 25;
                    $offset = ($pageno-1) * $no_of_records_per_page;
-                   $total_pages_sql = "SELECT COUNT(*) FROM `not_absensi` JOIN employee ON not_absensi.nama_pegawai=employee.nama_pegawai ";
+                   $total_pages_sql = "SELECT COUNT(*) FROM `face_absensi` JOIN employee ON face_absensi.nama_pegawai=employee.nama_pegawai ";
                    $total_pages_sql .= "WHERE 1 ";
 
-                   $sqlemp = "SELECT *, employee.divisi FROM `not_absensi` JOIN employee ON not_absensi.nama_pegawai=employee.nama_pegawai ";
-                   $sqlemp .= "WHERE 1 ";
+                   $sqlemp = "SELECT * FROM employee WHERE nama_pegawai NOT IN(SELECT nama_pegawai FROM face_absensi WHERE nama_pegawai IS NOT NULL AND DATE(waktu_masuk)=DATE(NOW())) ";
 
                    if (strlen($_SESSION['valuedivisi'])>=1) {
                         if ($_SESSION['valuedivisi']=='All') {
@@ -131,26 +124,11 @@ if(isset($_POST['btn-submit'])){
                         }
                     }
 
-                   if (strlen($_SESSION['from'])>5) {
-                     $date = new DateTime($_SESSION['from']);
-                     $dt1=$date->format('Y-m-d'); // To match MySQL date format
-                     $sqlemp .= "AND DATE(not_absensi.tanggal_absen)>= '$dt1' " ;
-                     $total_pages_sql .= "AND DATE(not_absensi.tanggal_absen)>= '$dt1' ";
-                   }
-
-                   if (strlen($_SESSION['to'])>5) {
-                     $date = new DateTime($_SESSION['to']);
-                     $dt2=$date->format('Y-m-d'); // To match MySQL date format
-                     $sqlemp .= "AND DATE(not_absensi.waktu_masuk)<= '$dt2' " ;
-                     $total_pages_sql .= "AND DATE(not_absensi.waktu_masuk)<= '$dt2' ";
-                   }
-
                    $result = $con->query($total_pages_sql);
                    // echo $total_pages_sql;
                    $total_rows = mysqli_fetch_array($result)[0];
                    $total_pages = ceil($total_rows / $no_of_records_per_page);
 
-                   $sqlemp .= "ORDER BY not_absensi.tanggal_absen ";
                    $sqlemp .= "LIMIT $offset, $no_of_records_per_page";
                    // echo $sqlemp;
                    $query = $con->query($sqlemp);
@@ -164,10 +142,8 @@ if(isset($_POST['btn-submit'])){
                             echo '<tr>';
                             echo '<td>'. $noe++ . '</td>';
                             echo '<td>'. $row['nama_pegawai'] . '</td>';
-                            echo '<td>'. $row['employee_id'] . '</td>';
-                            echo '<td>'. $row['tanggal_absen'] . '</td>';
+                            echo '<td>'. $row['id_pegawai'] . '</td>';
                             echo '<td>'. $row['divisi'] . '</td>';
-
                             echo '</tr>';
                    }
 
@@ -176,7 +152,7 @@ if(isset($_POST['btn-submit'])){
                   </tbody>
             </table>
             <center>
-              <a target="_blank" href="export_notabsensi.php">EXPORT KE EXCEL</a>
+              <!-- <a target="_blank" href="export_absensi.php">EXPORT KE EXCEL</a> -->
             </center>
                   <ul class="pagination">
                       <li><a href="?pageno=1">First</a></li>

@@ -19,8 +19,16 @@
         </a>
       </li>
       <li>
+      <li>
         <a href="notabsence.php">
-          <i class="fa fa-address-book-o"></i> <span>Data Belum/Tidak Absensi</span>
+          <i class="fa fa-address-book-o"></i> <span>Data Tidak Absensi</span>
+          <span class="pull-right-container">
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="belumabsence.php">
+          <i class="fa fa-address-book-o"></i> <span>Data Belum Absensi</span>
           <span class="pull-right-container">
           </span>
         </a>
